@@ -7,6 +7,7 @@ import lombok.Setter;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.time.ZonedDateTime;
 import java.util.Set;
 
 @Getter
@@ -24,6 +25,11 @@ public class User implements UserDetails {
     private boolean accountNonLocked;
     private boolean credentialsNonExpired;
     private boolean enabled;
+
+    @Column(insertable = false, updatable = false)
+    private ZonedDateTime createTime;
+    @Column(insertable = false, updatable = false)
+    private ZonedDateTime updateTime;
 
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")

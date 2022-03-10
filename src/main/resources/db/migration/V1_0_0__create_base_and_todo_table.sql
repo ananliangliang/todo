@@ -17,7 +17,8 @@ create table user
 
 create table authority
 (
-    id          bigint                             null,
+    id          bigint auto_increment
+        primary key,
     user_id     bigint                             not null,
     authority   varchar(32)                        not null,
     create_time datetime default CURRENT_TIMESTAMP not null,
