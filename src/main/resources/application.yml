@@ -10,5 +10,6 @@ spring:
     username: root
     password: 12as!@AS
   jpa:
-    show-sql: true
+    show-sql: on
+    open-in-view: on
 

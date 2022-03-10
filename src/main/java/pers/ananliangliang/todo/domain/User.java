@@ -31,7 +31,7 @@ public class User implements UserDetails {
     @Column(insertable = false, updatable = false)
     private ZonedDateTime updateTime;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany
     @JoinColumn(name = "user_id")
     private Set<Authority> authorities;
 
