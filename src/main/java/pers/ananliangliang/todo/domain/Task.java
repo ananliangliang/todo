@@ -1,6 +1,7 @@
 package pers.ananliangliang.todo.domain;
 
 import lombok.*;
+import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
 import java.time.ZonedDateTime;
@@ -9,9 +10,10 @@ import java.time.ZonedDateTime;
 @Setter
 @Entity
 @Builder
+@DynamicInsert
 @NoArgsConstructor
 @AllArgsConstructor
-public class Todo {
+public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

@@ -28,8 +28,8 @@ create table authority
 );
 
 
--- to-do table
-create table todo
+-- task table
+create table task
 (
     id            bigint auto_increment
         primary key,
@@ -41,5 +41,5 @@ create table todo
     update_time   datetime default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP
 );
 
-create index todo_is_complete_index
-    on todo (is_complete);
+create index task_is_complete_index
+    on task (is_complete);

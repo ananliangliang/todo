@@ -11,5 +11,9 @@ spring:
     password: 12as!@AS
   jpa:
     show-sql: on
-    open-in-view: on
+    open-in-view: off
+logging:
+  level:
+    org.springframework.security: trace
+
 
