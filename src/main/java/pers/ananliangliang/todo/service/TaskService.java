@@ -3,15 +3,15 @@ package pers.ananliangliang.todo.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pers.ananliangliang.todo.domain.Task;
-import pers.ananliangliang.todo.repository.TodoRepository;
+import pers.ananliangliang.todo.repository.TaskRepository;
 
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class TodoService {
+public class TaskService {
 
-    private final TodoRepository repository;
+    private final TaskRepository repository;
 
     public List<Task> getTasks() {
 

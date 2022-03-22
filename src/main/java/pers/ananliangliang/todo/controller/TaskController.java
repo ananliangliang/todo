@@ -10,16 +10,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import pers.ananliangliang.todo.domain.Task;
 import pers.ananliangliang.todo.domain.form.PostTodoForm;
-import pers.ananliangliang.todo.service.TodoService;
+import pers.ananliangliang.todo.service.TaskService;
 
 import javax.validation.Valid;
 import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-public class TodoController {
+public class TaskController {
 
-    private final TodoService service;
+    private final TaskService service;
 
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/tasks")
@@ -28,7 +28,6 @@ public class TodoController {
         return ResponseEntity.ok(tasks);
     }
 
-//    @PreAuthorize("permitAll()")
     @PreAuthorize("isAuthenticated()")
     @PostMapping("/tasks")
     public ResponseEntity<Task> postTask(@RequestBody @Valid PostTodoForm form) {

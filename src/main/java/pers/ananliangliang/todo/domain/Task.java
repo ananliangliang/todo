@@ -2,6 +2,7 @@ package pers.ananliangliang.todo.domain;
 
 import lombok.*;
 import org.hibernate.annotations.DynamicInsert;
+import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.*;
 import java.time.ZonedDateTime;
@@ -13,10 +14,7 @@ import java.time.ZonedDateTime;
 @DynamicInsert
 @NoArgsConstructor
 @AllArgsConstructor
-public class Task {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Task extends AbstractPersistable<Long> {
     private String title;
     private String comment;
     private Boolean isComplete;

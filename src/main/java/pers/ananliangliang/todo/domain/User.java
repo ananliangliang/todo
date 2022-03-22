@@ -4,9 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.data.jpa.domain.AbstractPersistable;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import java.time.ZonedDateTime;
 import java.util.Set;
 
@@ -15,10 +18,8 @@ import java.util.Set;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class User extends AbstractPersistable<Long> {
+
     private String username;
     private String password;
     private boolean accountNonExpired;
@@ -35,4 +36,9 @@ public class User {
     @JoinColumn(name = "user_id")
     private Set<Authority> authorities;
 
+
+    @Override
+    public boolean isNew() {
+        return false;
+    }
 }
