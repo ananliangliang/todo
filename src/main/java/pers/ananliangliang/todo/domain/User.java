@@ -4,12 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.time.ZonedDateTime;
 import java.util.Set;
 
@@ -32,8 +31,12 @@ public class User extends AbstractPersistable<Long> {
     @Column(insertable = false, updatable = false)
     private ZonedDateTime updateTime;
 
-    @OneToMany
-    @JoinColumn(name = "user_id")
+    @ManyToMany
+    @Fetch(FetchMode.JOIN)
+    @JoinTable(name = "user_authority",
+            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "authority_id", referencedColumnName = "id")}
+    )
     private Set<Authority> authorities;
 
 

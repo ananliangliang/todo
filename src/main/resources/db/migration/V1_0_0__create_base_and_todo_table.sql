@@ -26,13 +26,24 @@ create table authority
 (
     id          bigint auto_increment
         primary key,
-    user_id     bigint                             not null,
     authority   varchar(32)                        not null,
     create_time datetime default CURRENT_TIMESTAMP not null,
-    update_time datetime default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP,
-    constraint authority_user_id_authority_uindex
-        unique (user_id, authority)
+    update_time datetime default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP
 );
+
+
+create table user_authority
+(
+    user_id      bigint not null comment '用户id',
+    authority_id bigint not null comment '权限id'
+)
+    comment '用户权限关联表';
+
+create index user_authority_authority_id_index
+    on user_authority (authority_id);
+
+create index user_authority_user_id_index
+    on user_authority (user_id);
 
 
 -- task table
