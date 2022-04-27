@@ -2,7 +2,7 @@ package pers.ananliangliang.todo.domain;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.security.core.GrantedAuthority;
+import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,11 +12,8 @@ import javax.persistence.Id;
 @Getter
 @Setter
 @Entity
-public class Authority implements GrantedAuthority {
+public class Authority extends AbstractPersistable<Long> {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
     private String authority;
 
 }
